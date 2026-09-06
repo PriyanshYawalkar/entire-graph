@@ -59,18 +59,31 @@ func TestDatabricksPayloadAndOfflineFallback(t *testing.T) {
 	}
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		var payload map[string]any
-		if err := json.NewDecoder(r.Body).Decode(&payload); err != nil || payload["inputs"] == nil {
-			t.Fatalf("payload = %#v, err=%v", payload, err)
+		if err := json.NewDecoder(r.Body).Decode(&payload); err != nil {
+			t.Fatalf("payload error err=%v", err)
 		}
 		if r.Header.Get("Authorization") != "Bearer test-token" {
 			t.Fatal("missing bearer token")
 		}
-		_, _ = w.Write([]byte(`{"risk_score":8,"classifications":["BOLA"],"recommendations":["exercise webhook"]}`))
+
+		if strings.Contains(r.URL.Path, "serving-endpoints") {
+			if payload["messages"] == nil {
+				t.Fatalf("missing messages payload = %#v", payload)
+			}
+			_, _ = w.Write([]byte(`{"choices":[{"message":{"role":"assistant", "content":"Mock recommendations"}}]}`))
+		} else if strings.Contains(r.URL.Path, "sql/statements") {
+			if payload["statement"] == nil {
+				t.Fatalf("missing statement payload = %#v", payload)
+			}
+			_, _ = w.Write([]byte(`{"status": "SUCCEEDED"}`))
+		} else {
+			t.Fatalf("unexpected route: %s", r.URL.Path)
+		}
 	}))
 	defer server.Close()
 	client := DatabricksClient{Host: server.URL, Token: "test-token", Enabled: true, HTTPClient: server.Client()}
 	got := client.Evaluate(context.Background(), report)
-	if got.Source != "databricks" || got.RiskScore != 8 || !strings.Contains(strings.Join(got.Classifications, ","), "BOLA") {
+	if got.Source != "databricks" || got.RiskScore != 8.5 || !strings.Contains(strings.Join(got.Classifications, ","), "BOLA") {
 		t.Fatalf("remote result = %#v", got)
 	}
 }

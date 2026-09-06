@@ -242,14 +242,43 @@ func WriteText(out io.Writer, report Report, intelligence IntelligenceResult) er
 		}
 		fmt.Fprintf(&buffer, "- %s %s via %s (depth %d, %s; %s)\n", route.Method, route.Path, route.HandlerName, route.Depth, auth, route.RegressionState)
 	}
-	fmt.Fprintf(&buffer, "Risk score: %d/10 (%s)\n", intelligence.RiskScore, intelligence.Source)
-	for _, alert := range report.Alerts {
-		fmt.Fprintf(&buffer, "! [%s] %s: %s\n", alert.Severity, alert.Code, alert.Message)
+
+	severity := "HIGH"
+	if intelligence.RiskScore < 7.0 {
+		severity = "MEDIUM"
 	}
+	if intelligence.RiskScore < 4.0 {
+		severity = "LOW"
+	}
+
+	fmt.Fprintf(&buffer, "\n  ┌─────────────────────────────────────────────────────────────┐\n")
+	fmt.Fprintf(&buffer, "  │  DATABRICKS INTELLIGENCE ASSESSMENT                         │\n")
+	fmt.Fprintf(&buffer, "  ├─────────────────────────────────────────────────────────────┤\n")
+	fmt.Fprintf(&buffer, "  │  • Model: %-46s│\n", truncate(intelligence.Model, 46))
+	riskStr := fmt.Sprintf("%.1f/10 [%s]", intelligence.RiskScore, severity)
+	fmt.Fprintf(&buffer, "  │  • Structural Risk Score: %-32s│\n", truncate(riskStr, 32))
+	fmt.Fprintf(&buffer, "  │  • Logic Flaw: %-41s│\n", truncate(intelligence.LogicFlaw, 41))
+	fmt.Fprintf(&buffer, "  │  • Invariant Check: %-36s│\n", truncate(intelligence.InvariantCheck, 36))
+	fmt.Fprintf(&buffer, "  │  • Generated Test: %-37s│\n", truncate(intelligence.GeneratedTest, 37))
+	fmt.Fprintf(&buffer, "  └─────────────────────────────────────────────────────────────┘\n\n")
+
+	if intelligence.Source != "databricks" {
+		for _, alert := range report.Alerts {
+			fmt.Fprintf(&buffer, "! [%s] %s: %s\n", alert.Severity, alert.Code, alert.Message)
+		}
+	}
+
 	fmt.Fprintf(&buffer, "Regression tests: %d existing, %d route stubs required\n", len(report.TestSelection.ExistingTests), len(report.TestSelection.MissingRoutes))
 	for _, stub := range report.TestSelection.Stubs {
 		fmt.Fprintf(&buffer, "  %s\n", stub)
 	}
 	_, err := out.Write(buffer.Bytes())
 	return err
+}
+
+func truncate(s string, l int) string {
+	if len(s) > l {
+		return s[:l-3] + "..."
+	}
+	return s
 }
