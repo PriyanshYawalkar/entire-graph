@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "SentryGraph | Security blast radius",
-  description: "Checkpoint-aware graph security review for Entire Graph.",
+  title: "SentryGraph | Evidence for every security change",
+  description: "Checkpoint-aware blast-radius reviews powered by Entire Graph.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
