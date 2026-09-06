@@ -27,6 +27,10 @@ go build -o entire-graph ./cmd/entire-graph
 ./entire-graph sentry-scan --repo . --symbol runImpact --format json
 ```
 
+For the judging demo, open `web/sentrygraph-demo.html`. It is an interactive,
+zero-dependency dashboard that starts with the documented fixture and can import
+any `sentry-scan --format json` report through its **Import scan JSON** control.
+
 For optional Databricks enrichment, provide secrets only through the environment (never source control):
 
 ```sh
