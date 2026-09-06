@@ -1,5 +1,6 @@
 /entire-graph
 /dist/
+node_modules/
 __pycache__/
 *.py[cod]
 
