@@ -204,6 +204,15 @@ var commandDocs = []commandDoc{
 		examples: []string{"entire graph impact --repo . --symbol WriteText"},
 	},
 	{
+		name:    "sentry-scan",
+		group:   groupAnalyze,
+		summary: "Security blast radius, checkpoint intent, and regression matrix",
+		usage:   []string{"entire graph sentry-scan --repo . --symbol NAME [--symbol NAME] [--intent text] [--depth 3] [--databricks] [--format text|json]"},
+		long:    "Builds a reverse call-graph slice from changed symbols to HTTP route handlers, compares that surface to declared checkpoint intent, selects regression tests, and emits deterministic local security findings. The command is no-egress by default. --databricks is opt-in and requires DATABRICKS_HOST plus DATABRICKS_TOKEN; failures fall back to local rules.",
+		flags: []flagDoc{{name: "--repo", arg: "path", desc: "Repository to scan (default: current repository)"}, {name: "--symbol", arg: "NAME", desc: "Modified symbol (repeatable, required)"}, {name: "--intent", arg: "text", desc: "Developer checkpoint intent"}, {name: "--depth", arg: "n", def: "3", desc: "Reverse CALLS traversal depth (1-10)"}, {name: "--databricks", desc: "Opt in to Databricks Model Serving enrichment"}, {name: "--format", arg: "text|json", def: "text", desc: "Report format"}},
+		examples: []string{`entire graph sentry-scan --repo . --symbol sanitizeToken --intent "internal auth refactor only"`},
+	},
+	{
 		name:    "def",
 		group:   groupInspect,
 		summary: "What a name IS: declaration, fields, and method surface",
