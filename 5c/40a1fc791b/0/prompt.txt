@@ -1,0 +1,1 @@
+You can boot a Windows VM via az CLI. Go and fix it.

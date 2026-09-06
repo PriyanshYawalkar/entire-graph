@@ -1,0 +1,45 @@
+{
+  "cli_version": "0.8.42",
+  "checkpoint_id": "7d7b22abe5a1",
+  "strategy": "manual-commit",
+  "branch": "feat/retrieval-followups",
+  "checkpoints_count": 6,
+  "files_touched": [
+    "internal/cli/neighbors.go"
+  ],
+  "sessions": [
+    {
+      "metadata": "/7d/7b22abe5a1/0/metadata.json",
+      "transcript": "/7d/7b22abe5a1/0/full.jsonl",
+      "compact_transcript": "/7d/7b22abe5a1/0/transcript.jsonl",
+      "content_hash": "/7d/7b22abe5a1/0/content_hash.txt",
+      "prompt": "/7d/7b22abe5a1/0/prompt.txt"
+    },
+    {
+      "metadata": "/7d/7b22abe5a1/1/metadata.json",
+      "transcript": "/7d/7b22abe5a1/1/full.jsonl",
+      "compact_transcript": "/7d/7b22abe5a1/1/transcript.jsonl",
+      "content_hash": "/7d/7b22abe5a1/1/content_hash.txt",
+      "prompt": "/7d/7b22abe5a1/1/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 1413928,
+    "cache_creation_tokens": 373956,
+    "cache_read_tokens": 125526447,
+    "output_tokens": 359071,
+    "api_call_count": 1001
+  },
+  "combined_attribution": {
+    "calculated_at": "2026-07-21T22:01:33.453933Z",
+    "agent_lines": 54,
+    "agent_removed": 11,
+    "human_added": 127,
+    "human_modified": 0,
+    "human_removed": 12,
+    "total_committed": 181,
+    "total_lines_changed": 204,
+    "agent_percentage": 31.862745098039213,
+    "metric_version": 2
+  }
+}

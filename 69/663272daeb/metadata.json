@@ -1,0 +1,40 @@
+{
+  "branch": "codex/pr88-aikido-fix",
+  "checkpoint_id": "69663272daeb",
+  "checkpoints_count": 3,
+  "cli_version": "0.9.1-nightly.202608080619.caa0c9be9",
+  "files_touched": [
+    "internal/sem/cache_entry.go",
+    "internal/sem/cache_entry_test.go",
+    "internal/sem/records_cache.go",
+    "internal/sem/records_cache_test.go",
+    "internal/sem/search_cache.go",
+    "internal/sem/search_cache_test.go",
+    "internal/sem/search_test.go",
+    "internal/sem/typescript_test.go"
+  ],
+  "has_review": true,
+  "sessions": [
+    {
+      "metadata": "/69/663272daeb/0/metadata.json",
+      "transcript": "/69/663272daeb/0/full.jsonl",
+      "compact_transcript": "/69/663272daeb/0/transcript.jsonl",
+      "content_hash": "/69/663272daeb/0/content_hash.txt",
+      "prompt": ""
+    },
+    {
+      "content_hash": "/69/663272daeb/1/content_hash.txt",
+      "metadata": "/69/663272daeb/1/metadata.json",
+      "prompt": "/69/663272daeb/1/prompt.txt",
+      "transcript": "/69/663272daeb/1/full.jsonl"
+    }
+  ],
+  "strategy": "manual-commit",
+  "token_usage": {
+    "input_tokens": 475115,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 21864785,
+    "output_tokens": 55391,
+    "api_call_count": 200
+  }
+}

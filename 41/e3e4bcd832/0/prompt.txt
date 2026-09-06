@@ -1,0 +1,5 @@
+--- FAIL: TestAnalyzeGitRangeBudgetStopsInsideOnePrimeWindow (2.26s)
+    analyze_test.go:2009: analyzed 104 and skipped 25 exceeds 128 changed files
+FAIL
+FAIL    github.com/entireio/entire-graph/internal/sem    98.887s
+?       github.com/entireio/entire-graph/internal/sem/grammars/clojure    [no test files]

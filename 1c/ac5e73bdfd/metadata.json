@@ -1,0 +1,45 @@
+{
+  "cli_version": "0.8.42",
+  "checkpoint_id": "1cac5e73bdfd",
+  "strategy": "manual-commit",
+  "branch": "feat/retrieval-followups",
+  "checkpoints_count": 10,
+  "files_touched": [
+    "internal/sem/call_scanners.go"
+  ],
+  "sessions": [
+    {
+      "metadata": "/1c/ac5e73bdfd/0/metadata.json",
+      "transcript": "/1c/ac5e73bdfd/0/full.jsonl",
+      "compact_transcript": "/1c/ac5e73bdfd/0/transcript.jsonl",
+      "content_hash": "/1c/ac5e73bdfd/0/content_hash.txt",
+      "prompt": "/1c/ac5e73bdfd/0/prompt.txt"
+    },
+    {
+      "metadata": "/1c/ac5e73bdfd/1/metadata.json",
+      "transcript": "/1c/ac5e73bdfd/1/full.jsonl",
+      "compact_transcript": "/1c/ac5e73bdfd/1/transcript.jsonl",
+      "content_hash": "/1c/ac5e73bdfd/1/content_hash.txt",
+      "prompt": "/1c/ac5e73bdfd/1/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 1413776,
+    "cache_creation_tokens": 252603,
+    "cache_read_tokens": 103200840,
+    "output_tokens": 294961,
+    "api_call_count": 925
+  },
+  "combined_attribution": {
+    "calculated_at": "2026-07-21T18:55:32.315177Z",
+    "agent_lines": 698,
+    "agent_removed": 21,
+    "human_added": 814,
+    "human_modified": 0,
+    "human_removed": 41,
+    "total_committed": 1512,
+    "total_lines_changed": 1574,
+    "agent_percentage": 45.67979669631512,
+    "metric_version": 2
+  }
+}

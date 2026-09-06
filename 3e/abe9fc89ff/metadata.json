@@ -1,0 +1,47 @@
+{
+  "cli_version": "dev",
+  "checkpoint_version": "branch-v1",
+  "checkpoint_id": "3eabe9fc89ff",
+  "strategy": "manual-commit",
+  "branch": "fix/typescript-bodyless-declaration-extraction",
+  "checkpoints_count": 64,
+  "files_touched": [
+    "internal/sem/parser.go",
+    "internal/sem/parser_typescript_regression_test.go"
+  ],
+  "sessions": [
+    {
+      "metadata": "/3e/abe9fc89ff/0/metadata.json",
+      "transcript": "/3e/abe9fc89ff/0/full.jsonl",
+      "compact_transcript": "/3e/abe9fc89ff/0/transcript.jsonl",
+      "content_hash": "/3e/abe9fc89ff/0/content_hash.txt",
+      "prompt": "/3e/abe9fc89ff/0/prompt.txt"
+    },
+    {
+      "metadata": "/3e/abe9fc89ff/1/metadata.json",
+      "transcript": "/3e/abe9fc89ff/1/full.jsonl",
+      "compact_transcript": "/3e/abe9fc89ff/1/transcript.jsonl",
+      "content_hash": "/3e/abe9fc89ff/1/content_hash.txt",
+      "prompt": "/3e/abe9fc89ff/1/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 214657,
+    "cache_creation_tokens": 213900764,
+    "cache_read_tokens": 3107717357,
+    "output_tokens": 8335891,
+    "api_call_count": 6514
+  },
+  "combined_attribution": {
+    "calculated_at": "2026-08-05T21:56:38.207208Z",
+    "agent_lines": 178,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 178,
+    "total_lines_changed": 178,
+    "agent_percentage": 100,
+    "metric_version": 2
+  }
+}

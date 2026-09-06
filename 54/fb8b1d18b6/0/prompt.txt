@@ -1,0 +1,31 @@
+Another entire-brain run reports this:
+
+Validated with fresh local builds of both repos.
+
+Result:
+- The original `entire-sem` fixes are partially validated:
+  - `doctor --json` now reports `no_egress: true`.
+  - `snapshot --repo ... --format ndjson --no-network` now works.
+  - `agentviz` snapshot now emits `repo_key: gh/jayparikh/agentviz`.
+
+But full `entire-brain index` on `agentviz` still fails after indexing because `entire-sem` emits duplicate symbol IDs:
+
+```text
+semantic sqlite symbol count 874 does not match manifest 877
+```
+
+Duplicates found:
+- `gh/jayparikh/agentviz:TypeScript:src/lib/session.ts:method:toPosition`
+- `gh/jayparikh/agentviz:TypeScript:src/lib/session.ts:method:toTime`
+- `gh/jayparikh/agentviz:JavaScript:src/__tests__/v2Shell.test.jsx:function:Harness`
+
+Control validation passed on `/Users/thomi/Projects/entire-brain`:
+- `index` without `--skip-sem`
+- `stale`
+- `query`
+- `context`
+- `impact`
+- `bundle export`
+- `bundle import`
+
+So the provider contract fixes worked, but `entire-sem` still needs to make symbol IDs unique for duplicate same-name symbols in the same file.
